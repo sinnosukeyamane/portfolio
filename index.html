@@ -1,49 +1,325 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ポートフォリオ</title>
-    <link rel="stylesheet" href="main.css" />
-  </head>
-  <body>
-    <div class="container">
-      <h1>XXX's Portfolio</h1>
-      <p>関西在住の高専4年生です。メカトロ系の学科に在籍しています。</p>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
 
-      <h2>Works</h2>
-
-      <h3>2022年: 自律走行ロボットの設計製作</h3>
-      <p>
-        3年次に「<strong>自律走行ロボットの開発プロジェクト</strong>」に取り組みました。
-      </p>
-      <p>
-        具体的には超音波センサ（検知範囲:5-100cm）を用いた障害物回避システムを搭載した「キャタピラ型走行ロボット」をクラスメイト4名とチームを組んで、要件定義から完成まで約16週間かけて取り組みました。自分は、Fusion
-        360（3次元CAD）を用いた機械設計を担当し、シャーシやマウント類など計127個の部品を設計しました（加工も共同で担当しました）。また、制御系の補助として、Arduino
-        で動かす自律制御プログラムの実装とテスト、調整も担当しました。。
-      </p>
-      <div class="img-2col-container">
-        <div>
-          <img src="work-01.jpg" />
+    <div class="welcome-container" id="welcome-container">
+        <div class="welcome-content">
+            <div class="image-container">
+                <img src="img/me.png" alt="プロフィール画像" class="welcome-image">
+            </div>
+            <div class="welcome-text">
+                <h1>
+                    <span class="word" data-delay="0">Welcome</span>
+                    <span class="word" data-delay="1">to</span>
+                    <span class="word" data-delay="2">Yamane's</span>
+                    <span class="word" data-delay="3">Portfolio!</span>
+                </h1>
+            </div>
         </div>
-        <div>
-          <img src="work-02.jpg" />
-        </div>
-      </div>
-
-      <h2>Skills</h2>
-      <p>
-        授業やクラブ活動、文化祭活動、趣味を含めて利用経験のあるハードウェアやソフトウェアの一覧です。習熟度の目安として累積使用時間が10時間以上のものを「★」、30時間以上を「★★」、100時間以上を「★★★」と表記しています。
-      </p>
-      <ul>
-        <li>Fusion 360（3D-CAD）</li>
-        <li>汎用旋盤</li>
-        <li>ボール盤</li>
-        <li>フライス盤</li>
-        <li>Arduino</li>
-        <li>電子工作（ブレッドボード）</li>
-        <li>Python</li>
-      </ul>
     </div>
-  </body>
+    
+    
+    <!-- ローディングスピナー -->
+    <div id="loading-spinner"></div>
+
+
+    <!-- ナビバーのトグルボタン -->
+    <button id="toggle-navbar" class="toggle-navbar">≪</button>
+
+    <header>
+        <div class="navbar" id="navbar">
+            <a href="#about" aria-label="Aboutセクションへ移動">
+                <img src="img/about.png" alt="About Icon" class="nav-icon"> About
+            </a>
+            <a href="#works" aria-label="Worksセクションへ移動">
+                <img src="img/works.png" alt="Works Icon" class="nav-icon"> Works
+            </a>
+            <a href="#history" aria-label="Historyセクションへ移動">
+                <img src="img/history.png" alt="History Icon" class="nav-icon"> History
+            </a>
+            <a href="#skills" aria-label="Skillsセクションへ移動">
+                <img src="img/skills.png" alt="Skills Icon" class="nav-icon"> Skills
+            </a>
+            <a href="#links" aria-label="Linksセクションへ移動">
+                <img src="img/links.png" alt="Links Icon" class="nav-icon"> Links
+            </a>
+        </div>
+    </header>
+    
+<section id="about">
+    <header class="topbar">
+        <h2>About</h2>
+    </header>
+    <div class="about-container">
+        <div class="about-image-container">
+            <img src="img/me.png" alt="プロフィール画像" class="about-image" id="emoji-button">
+        </div>
+        <div class="about-text">
+          <p>初めまして！大阪府出身、高専4年生・19歳の</p>
+            <p>山根 愼之輔(ヤマネ シンノスケ)です！</p>
+            <p><strong>Web</strong>開発やゲーム制作を得意としています！</p>
+            <p>趣味はプログラミング、筋トレ、食べることです！</p>
+        </div>
+    </div>
+    <p>最終更新日(2025/01/07)</p>
+</section>
+
+  
+    <section id="works">
+        <header class="topbar">
+            <h2>Works</h2>
+        </header>
+        <div class="work-item">
+            <img src="img/project1.png" alt="Project 1">
+            <div class="work-description">
+                <h3>Unity開発#1</h3>
+                <p>Uniryで開発した2DGameです。超シンプルなInvaider gameを作成しました。</p>
+            </div>
+        </div>
+        <div class="work-item">
+            <img src="img/project2.png" alt="Project 2">
+            <div class="work-description">
+                <h3>Unity開発#2</h3>
+                <p>Unityで開発した2DGameです。<a href="https://rugugu.jp/dinosaur-game/" target="_blank" class="hover-link">Googleの恐竜ゲーム</a>をAssetを使用して模倣作成中です。</p>
+            </div>
+        </div>
+        <div class="work-item">
+            <img src="img/project3.png" alt="Project 3">
+            <div class="work-description">
+                <h3>基礎研究</h3>
+                <p>高専で行った基礎研究です。任天堂をコンセプトとした、寿司注文システムを作成しました。</p>
+                <p>Nintendo Pro ControllerとArduinoを使用して、Dobot M1による寿司クレーンゲーム、</p>
+                <p>Raspberry Piとマイクロスイッチを使用して遠隔でのコインカウントシステムを構築しました。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="history">
+        <header class="topbar">
+          <h2>History</h2>
+        </header>
+        <p class="description">これまでの経歴を記載します。<strong>プログラミング</strong>は主に独学で行っています。</p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">2006年/0歳</div>
+            <div class="timeline-content">誕生。</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2012年/6歳</div>
+            <div class="timeline-content">小学校入学。</div>
+          </div>     
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2013年/7歳</div>
+            <div class="timeline-content">プログラミングを習う。HTML/CSS/JSによるフロントエンド、Web制作を学ぶ。</div>
+          </div>         
+          <div class="timeline-item">
+            <div class="timeline-year">2018年/12歳</div>
+            <div class="timeline-content">中学校入学。5年間習ったプログラミング教室を辞める。</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2021年/14歳</div>
+            <div class="timeline-content">高専入学</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2022~2024年/15~17歳</div>
+            <div class="timeline-content special-content">
+              高専でC言語/KiCad/Fusion360/Arduino/RaspberryPi/Pythonの基礎知識を学ぶ。
+            </div>
+            
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2025年/18歳</div>
+            <div class="timeline-content">現在:Unityで2D/3DGame制作に注力する。</div>
+          </div>
+        </div>
+      </section>
+      
+      <section id="skills"> 
+        <header class="topbar">
+          <h2>Skills</h2>
+        </header>
+        <div class="skills-container">
+          <div class="skill-category">
+            <h3>デザイン・コーディング</h3>
+            <p>基本的なHTML/CSSコーディングは可能です。</p>
+            <table>
+              <tr>
+                <th>技術</th>
+                <th>経験年数</th>
+                <th>スキル</th>
+              </tr>
+              <tr>
+                <td><a href="https://ja.wikipedia.org/wiki/HTML" target="_blank" class="skill-link">HTML</a></td>
+                <td>3年</td>
+                <td>★★★★☆</td>
+              </tr>
+              <tr>
+                <td><a href="https://ja.wikipedia.org/wiki/Cascading_Style_Sheets" target="_blank" class="skill-link">CSS</a></td>
+                <td>3年</td>
+                <td>★★★★☆</td>
+              </tr>
+            </table>
+          </div>
+      
+          <div class="skill-category">
+            <h3>フロントエンド</h3>
+            <p>RNode.jsやJavaScriptを用いたフロントエンド開発が可能です。</p>
+            <table>
+              <tr>
+                <th>技術</th>
+                <th>経験年数</th>
+                <th>スキル</th>
+              </tr>
+              <tr>
+                <td><a href="https://ja.wikipedia.org/wiki/Node.js" target="_blank" class="skill-link">Node.js</a></td>
+                <td>1年</td>
+                <td>★★★☆☆</td>
+              </tr>
+              <tr>
+                <td><a href="https://ja.wikipedia.org/wiki/JavaScript" target="_blank" class="skill-link">JavaScript</a></td>
+                <td>3年</td>
+                <td>★★★★☆</td>
+              </tr>
+            </table>
+          </div>
+      
+          <div class="skill-category">
+            <h3>バックエンド</h3>
+            <p>バックエンド開発ではPythonを主に使用します。</p>
+            <table>
+              <tr>
+                <th>技術</th>
+                <th>経験年数</th>
+                <th>スキル</th>
+              </tr>
+              <tr>
+                <td><a href="https://ja.wikipedia.org/wiki/Python" target="_blank" class="skill-link">Python</a></td>
+                <td>1年</td>
+                <td>★★★☆☆</td>
+              </tr>
+              <tr>
+                <td><a href="https://ja.wikipedia.org/wiki/C言語" target="_blank" class="skill-link">C</a></td>
+                <td>2年</td>
+                <td>★★★★☆</td>
+              </tr>
+            </table>
+          </div>
+      
+          <div class="skill-category">
+            <h3>マイクロコンピューター</h3>
+            <p>Raspberry PiやArduinoを用いた組み込み開発が可能です。</p>
+            <table>
+              <tr>
+                <th>技術</th>
+                <th>経験年数</th>
+                <th>スキル</th>
+              </tr>
+              <tr>
+                <td><a href="https://ja.wikipedia.org/wiki/Raspberry_Pi" target="_blank" class="skill-link">Raspberry Pi</a></td>
+                <td>1年</td>
+                <td>★★★☆☆</td>
+              </tr>
+              <tr>
+                <td><a href="https://ja.wikipedia.org/wiki/Arduino" target="_blank" class="skill-link">Arduino</a></td>
+                <td>1年</td>
+                <td>★★★☆☆</td>
+              </tr>
+            </table>
+          </div>
+      
+          <div class="skill-category">
+            <h3>設計・モデリング</h3>
+            <p>KiCadやFusion 360を用いた設計やモデリングが得意です。</p>
+            <table>
+              <tr>
+                <th>技術</th>
+                <th>経験年数</th>
+                <th>スキル</th>
+              </tr>
+              <tr>
+                <td><a href="https://ja.wikipedia.org/wiki/KiCad" target="_blank" class="skill-link">KiCad</a></td>
+                <td>1年</td>
+                <td>★★★☆☆</td>
+              </tr>
+              <tr>
+                <td><a href="https://ja.wikipedia.org/wiki/Fusion_360" target="_blank" class="skill-link">Fusion 360</a></td>
+                <td>1年</td>
+                <td>★★★☆☆</td>
+              </tr>
+            </table>
+          </div>
+      
+          <div class="skill-category">
+            <h3>その他</h3>
+            <p>UnityでC#を用いたゲーム開発が得意です。</p>
+            <table>
+              <tr>
+                <th>技術</th>
+                <th>経験年数</th>
+                <th>スキル</th>
+              </tr>
+              <tr>
+                <td><a href="https://ja.wikipedia.org/wiki/C_Sharp" target="_blank" class="skill-link">C#</a></td>
+                <td>2年</td>
+                <td>★★★★☆</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </section>
+    
+      <section id="links"> 
+        <header class="topbar">
+          <h2>Links</h2>
+        </header>
+        <ul class="links-list">
+          <li>
+            <a href="https://github.com" target="_blank" aria-label="GitHub">
+              <div class="link-icon github" data-name="GitHub">
+                <img src="img/github.png" alt="GitHub">
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">
+              <div class="link-icon facebook" data-name="Facebook">
+                <img src="img/facebook.png" alt="Facebook">
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com" target="_blank" aria-label="X">
+              <div class="link-icon x" data-name="X">
+                <img src="img/X.png" alt="X(旧Twitter)">
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+              <div class="link-icon instagram" data-name="Instagram">
+                <img src="img/instagram.png" alt="Instagram">
+              </div>
+            </a>
+          </li>
+        </ul>
+        <p class="note">※現在連携していません。</p>
+      </section>
+      
+      
+      <footer>
+        <p>&copy; 2025 山根 愼之輔 | すべての権利を保有</p>
+      </footer>
+      
+      <!-- ページの一番下にスクロールトップボタンを追加 -->
+<button id="scroll-to-top" class="scroll-to-top">^</button>
+
+    <script src="script.js"></script>
+</body>
 </html>
