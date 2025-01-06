@@ -266,7 +266,7 @@ section p {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 影を追加 */
   position: relative;
   overflow: hidden; /* アイコンが飛び出さないようにする */
-  transform: translateX(100px); /* 右に移動 */
+  transform: translateX(75px); /* 右に移動 */
   transition: transform 0.3s ease; /* スムーズな移動アニメーション */
 }
 
