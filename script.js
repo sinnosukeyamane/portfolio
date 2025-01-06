@@ -251,36 +251,7 @@ document.getElementById('toggle-navbar').addEventListener('click', () => {
 });
 
 
-// 画像拡大表示機能
-document.querySelectorAll('.work-item img').forEach(image => {
-    image.addEventListener('click', () => {
-        // 拡大画像用のモーダル作成
-        const modal = document.createElement('div');
-        modal.classList.add('image-modal');
 
-        // 拡大画像
-        const modalImage = document.createElement('img');
-        modalImage.src = image.src;
-        modalImage.classList.add('modal-image');
-
-        // 閉じるボタン
-        const closeButton = document.createElement('button');
-        closeButton.textContent = '×';
-        closeButton.classList.add('close-modal');
-
-        // モーダル全体をクリックで閉じる
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal || e.target === closeButton) {
-                modal.remove();
-            }
-        });
-
-        // モーダルに要素を追加
-        modal.appendChild(modalImage);
-        modal.appendChild(closeButton);
-        document.body.appendChild(modal);
-    });
-});
 
 // タイムライン項目を順番に表示する関数
 function animateTimelineSequentially() {
@@ -304,42 +275,94 @@ function animateTimelineSequentially() {
 // ページロード時にアニメーションを設定
 document.addEventListener('DOMContentLoaded', animateTimelineSequentially);
 
-// h3をクリックしたときに対応する画像を拡大表示
-document.querySelectorAll('.work-description h3').forEach((title) => {
-    title.addEventListener('click', (e) => {
-      const workItem = e.target.closest('.work-item');
-      const image = workItem.querySelector('img');
-  
-      if (image) {
-        // 拡大画像用のモーダル作成
+// 動画拡大表示機能
+document.querySelectorAll('.work-item video').forEach(video => {
+    // ホバー時に再生開始
+    video.addEventListener('mouseover', () => {
+        video.play();
+    });
+
+    // ホバーが外れたら再生停止
+    video.addEventListener('mouseout', () => {
+        video.pause();
+        video.currentTime = 0; // 再生位置をリセット
+    });
+
+    // クリックで拡大表示
+    video.addEventListener('click', () => {
+        // モーダル作成
         const modal = document.createElement('div');
-        modal.classList.add('image-modal');
-  
-        // 拡大画像
-        const modalImage = document.createElement('img');
-        modalImage.src = image.src;
-        modalImage.classList.add('modal-image');
-  
+        modal.classList.add('media-modal');
+
+        // モーダル内の動画
+        const modalVideo = document.createElement('video');
+        modalVideo.src = video.src;
+        modalVideo.controls = true;
+        modalVideo.loop = true;
+        modalVideo.autoplay = true;
+        modalVideo.classList.add('modal-media');
+
         // 閉じるボタン
         const closeButton = document.createElement('button');
         closeButton.textContent = '×';
         closeButton.classList.add('close-modal');
-  
+
         // モーダル全体をクリックで閉じる
-        modal.addEventListener('click', (event) => {
-          if (event.target === modal || event.target === closeButton) {
-            modal.remove();
-          }
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal || e.target === closeButton) {
+                modal.remove();
+                video.pause(); // 元の動画も停止
+                video.currentTime = 0; // 再生位置をリセット
+            }
         });
-  
+
         // モーダルに要素を追加
-        modal.appendChild(modalImage);
+        modal.appendChild(modalVideo);
         modal.appendChild(closeButton);
         document.body.appendChild(modal);
-      }
     });
-  });
-  
+});
+
+
+// h3をクリックしたときに対応する動画を拡大表示
+document.querySelectorAll('.work-description h3').forEach(title => {
+    title.addEventListener('click', (e) => {
+        const workItem = e.target.closest('.work-item');
+        const video = workItem.querySelector('video');
+
+        if (video) {
+            // 拡大動画用のモーダル作成
+            const modal = document.createElement('div');
+            modal.classList.add('media-modal');
+
+            // 拡大動画
+            const modalVideo = document.createElement('video');
+            modalVideo.src = video.src;
+            modalVideo.controls = true; // 動画用の再生コントロールを追加
+            modalVideo.loop = true; // ループ再生
+            modalVideo.autoplay = true; // 自動再生
+            modalVideo.classList.add('modal-media');
+
+            // 閉じるボタン
+            const closeButton = document.createElement('button');
+            closeButton.textContent = '×';
+            closeButton.classList.add('close-modal');
+
+            // モーダル全体をクリックで閉じる
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal || event.target === closeButton) {
+                    modal.remove();
+                }
+            });
+
+            // モーダルに要素を追加
+            modal.appendChild(modalVideo);
+            modal.appendChild(closeButton);
+            document.body.appendChild(modal);
+        }
+    });
+});
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const welcomeContainer = document.getElementById('welcome-container');
