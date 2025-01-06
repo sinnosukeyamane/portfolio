@@ -555,6 +555,38 @@ section p {
   transition: transform 0.2s ease-in-out;
 }
 
+/* モバイル対応 */
+@media (max-width: 768px) {
+  /* Workアイテムのコンテナ */
+  .work-item {
+    flex-direction: column; /* 動画と説明を縦方向に並べる */
+    align-items: center; /* 中央揃え */
+    padding: 15px; /* パディングを調整 */
+  }
+
+  /* 動画のスタイル */
+  .work-video {
+    width: 100%; /* 動画をコンテナの幅にフィット */
+    max-width: 300px; /* 動画の最大幅を設定 */
+    height: auto; /* アスペクト比を維持 */
+    margin-bottom: 15px; /* 動画と説明の間隔を調整 */
+  }
+
+  /* Work説明のスタイル */
+  .work-description {
+    text-align: center; /* テキストを中央揃え */
+  }
+
+  .work-description h3 {
+    font-size: 1.2rem; /* フォントサイズを調整 */
+  }
+
+  .work-description p {
+    font-size: 0.9rem; /* フォントサイズを調整 */
+    line-height: 1.4; /* 行間を調整 */
+  }
+}
+
 
 /* Welcomeメッセージコンテナ */
 .welcome-container {
