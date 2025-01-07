@@ -99,7 +99,6 @@ body, html {
     padding: 10px; /* パディングを調整 */
     justify-content: center; /* ナビゲーションリンクを中央揃え */
     margin: 0 auto; /* ナビバー全体を中央揃え */
-    gap: 10px; /* アイコン間のスペースを追加 */
   }
 
   .navbar a {
@@ -373,7 +372,7 @@ section p {
 /* モバイル対応 - pタグのフォントサイズを調整 */
 @media (max-width: 768px) {
   #about p {
-    font-size: 1.2rem; /* フォントサイズを小さく設定 */
+    font-size: 0.9rem; /* フォントサイズを小さく設定 */
     line-height: 2; /* 行間を調整 */
     text-align: center; /* テキストを中央揃え */
     margin: 0 auto; /* 中央揃えのためにマージンを調整 */
