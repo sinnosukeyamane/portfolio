@@ -93,23 +93,42 @@ body, html {
   transform: rotate(15deg) scale(1.35); /* アイコンを傾けて拡大 */
 }
 
-/* レスポンシブ対応 */
 @media (max-width: 768px) {
   .navbar {
     flex-wrap: wrap; /* 必要に応じて折り返し */
     padding: 10px; /* パディングを調整 */
+    justify-content: center; /* ナビゲーションリンクを中央揃え */
+    margin: 0 auto; /* ナビバー全体を中央揃え */
+    gap: 10px; /* アイコン間のスペースを追加 */
   }
 
   .navbar a {
     font-size: 0.8rem; /* 小さい画面でのテキストサイズ調整 */
     gap: 4px; /* アイコンとテキストの間隔を調整 */
+    flex-direction: column; /* アイコンとテキストを縦に配置 */
+    align-items: center; /* 縦方向の中央揃え */
+    margin: 5px; /* リンク間のスペースを追加 */
   }
 
   .nav-icon {
     width: 30px; /* 小さい画面でのアイコンサイズ調整 */
     height: 30px;
   }
+
+  .toggle-navbar {
+    width: 50px; /* トグルボタンの幅を縮小 */
+    height: 50px; /* トグルボタンの高さを縮小 */
+    font-size: 1.2rem; /* トグルボタンのフォントサイズを小さく */
+    opacity: 0.5; /* ボタンを半透明に設定 */
+    transition: opacity 0.3s ease; /* ホバー時のアニメーションを追加 */
+  }
+
+  .toggle-navbar:hover {
+    opacity: 1; /* ホバー時に完全表示 */
+  }
 }
+
+
 
 
 /* 各セクションの境界線スタイル */
@@ -244,6 +263,41 @@ section p {
   transform: scale(1.2); /* ホバー時に拡大 */
 }
 
+/* モバイル対応 - スキルセクションを拡大し中央揃え */
+@media (max-width: 768px) {
+  .skills-container {
+    flex-direction: column; /* 縦方向に並べる */
+    gap: 20px; /* アイテム間の間隔を広げる */
+    align-items: center; /* 中央揃え */
+    padding: 20px; /* コンテナ全体の余白を追加 */
+  }
+
+  .skill-category {
+    width: 100%; /* コンテナ幅を画面幅全体に */
+    max-width: 600px; /* 最大幅を設定して中央揃え */
+    padding: 20px; /* 内側の余白を広げる */
+    font-size: 1rem; /* フォントサイズをやや大きく */
+    text-align: center; /* 全体を中央揃え */
+  }
+
+  .skill-category h3 {
+    font-size: 1.5rem; /* 見出しを大きく */
+    margin-bottom: 15px; /* 見出し下の間隔を調整 */
+  }
+
+  .skill-category p {
+    font-size: 1rem; /* 段落のフォントサイズを拡大 */
+    line-height: 1.6; /* 行間を広げて可読性を向上 */
+    text-align: center; /* テキストを中央揃え */
+  }
+
+  .skill-category table {
+    font-size: 0.95rem; /* テーブル内のフォントサイズを拡大 */
+    margin: 0 auto; /* テーブルを中央揃え */
+    max-width: 100%; /* テーブルの幅を親要素にフィット */
+  }
+}
+
 
 
 /* Aboutセクションのスタイル */
@@ -316,6 +370,16 @@ section p {
   color: #333; /* テキストカラー */
   text-align: left; /* 左揃え */
 }
+/* モバイル対応 - pタグのフォントサイズを調整 */
+@media (max-width: 768px) {
+  #about p {
+    font-size: 1.2rem; /* フォントサイズを小さく設定 */
+    line-height: 2; /* 行間を調整 */
+    text-align: center; /* テキストを中央揃え */
+    margin: 0 auto; /* 中央揃えのためにマージンを調整 */
+  }
+}
+
 
 
 /* 絵文字シャワー用のスタイル */
