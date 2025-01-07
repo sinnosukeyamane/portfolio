@@ -102,7 +102,7 @@ body, html {
   }
 
   .navbar a {
-    font-size: 0.8rem; /* 小さい画面でのテキストサイズ調整 */
+    font-size: 0.7rem; /* 小さい画面でのテキストサイズ調整 */
     gap: 4px; /* アイコンとテキストの間隔を調整 */
     flex-direction: column; /* アイコンとテキストを縦に配置 */
     align-items: center; /* 縦方向の中央揃え */
