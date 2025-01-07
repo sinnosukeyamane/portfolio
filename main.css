@@ -374,7 +374,7 @@ section p {
 /* モバイル対応 - pタグのフォントサイズを調整 */
 @media (max-width: 768px) {
   #about p {
-    font-size: 1rem; /* フォントサイズを小さく設定 */
+    font-size: 0.92rem; /* フォントサイズを小さく設定 */
     line-height: 2; /* 行間を調整 */
     text-align: center; /* テキストを中央揃え */
     margin: 0 auto; /* 中央揃えのためにマージンを調整 */
