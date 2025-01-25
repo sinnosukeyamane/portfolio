@@ -796,10 +796,11 @@ body.no-scroll {
 
 /* View More ボタンのスタイル */
 .view-more-btn {
-  display: inline-block;
-  padding: 8px 12px;
-  margin-top: 10px;
-  font-size: 0.9rem;
+  display: block; /* ブロック要素にして中央配置 */
+  width: 200px; /* 適度なボタン幅 */
+  margin: 15px auto 0; /* 上の要素と間隔を空けて中央配置 */
+  padding: 10px 15px;
+  font-size: 1rem;
   font-weight: bold;
   background-color: #2196f3;
   color: white;
@@ -807,8 +808,10 @@ body.no-scroll {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
+  text-align: center; /* テキスト中央揃え */
 }
 
+/* ホバーエフェクト */
 .view-more-btn:hover {
   background-color: #1976d2;
   transform: scale(1.1);
