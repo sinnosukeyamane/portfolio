@@ -10,6 +10,7 @@ body, html {
 
 
 
+
 /* トグルボタンのスタイル */
 .toggle-navbar {
   position: fixed;
@@ -871,6 +872,7 @@ body.no-scroll {
 
 /* コンテンツのスタイル修正 */
 .timeline-content {
+  
   background: #fff;
   border: 2px solid #ddd;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -1085,4 +1087,27 @@ body.no-scroll {
 .scroll-to-top:hover {
   background-color: #555;
   transform: scale(1.1);
+}
+
+.nhk-video {
+    width: 100%; /* 動画の横幅を調整 */
+    max-width: 300px; /* 最大幅を制限 */
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.nhk-video:hover {
+  transform: scale(1.2); /* ホバーで拡大 */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 影を追加 */
+}
+
+.nhk-video-container {
+  text-align: center; /* 動画を中央寄せ */
+  display: flex;
+  justify-content: center; /* 横方向の中央寄せ */
+  align-items: center; /* 縦方向の中央寄せ（必要なら） */
+  width: 100%;
 }
