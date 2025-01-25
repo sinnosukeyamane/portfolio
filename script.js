@@ -177,6 +177,42 @@ function generateTakoyakiIcons() {
     }
 }
 
+// View More ボタンの処理
+document.querySelectorAll('.view-more-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+        const videoSrc = e.target.getAttribute('data-video');
+
+        // モーダル作成
+        const modal = document.createElement('div');
+        modal.classList.add('media-modal');
+
+        // 動画要素
+        const modalVideo = document.createElement('video');
+        modalVideo.src = videoSrc;
+        modalVideo.controls = true;
+        modalVideo.loop = true;
+        modalVideo.autoplay = true;
+        modalVideo.classList.add('modal-media');
+
+        // 閉じるボタン
+        const closeButton = document.createElement('button');
+        closeButton.textContent = '×';
+        closeButton.classList.add('close-modal');
+
+        // モーダル全体をクリックで閉じる
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal || event.target === closeButton) {
+                modal.remove();
+            }
+        });
+
+        // モーダルに要素を追加
+        modal.appendChild(modalVideo);
+        modal.appendChild(closeButton);
+        document.body.appendChild(modal);
+    });
+});
+
 
 // Linksセクションが表示されるたびに画像を生成
 document.addEventListener('DOMContentLoaded', () => {

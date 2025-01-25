@@ -793,6 +793,28 @@ body.no-scroll {
   overflow: hidden;
 }
 /* Historyセクション */
+
+/* View More ボタンのスタイル */
+.view-more-btn {
+  display: inline-block;
+  padding: 8px 12px;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.view-more-btn:hover {
+  background-color: #1976d2;
+  transform: scale(1.1);
+}
+
+
 #history {
   padding: 30px 20px; /* 上下の余白を減らす */
   text-align: center; /* タイトルを中央揃え */
