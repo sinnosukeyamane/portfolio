@@ -101,4 +101,9 @@
     }
   }
   
-  
+  .small-text {
+    font-size: 18px; /* 小さめのサイズ（適宜変更可） */
+}
+.small-text-2 {
+  font-size: 14px; /* 小さめのサイズ（適宜変更可） */
+}
