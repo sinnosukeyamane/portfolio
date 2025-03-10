@@ -41,6 +41,22 @@ document.querySelectorAll('.navbar a').forEach(link => {
         }
     });
 });
+// タイムラインのアニメーション処理
+document.addEventListener("DOMContentLoaded", () => {
+    const timelineItems = document.querySelectorAll(".timeline-item");
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("animate"); // クラスを追加してアニメーション開始
+            } else {
+                entry.target.classList.remove("animate"); // 画面外に出たらリセット
+            }
+        });
+    }, { threshold: 0.3 });
+
+    timelineItems.forEach((item) => observer.observe(item));
+});
 
 // スクロール時のナビバーの透明度を調整
 window.addEventListener('scroll', () => {

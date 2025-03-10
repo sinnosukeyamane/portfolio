@@ -1,0 +1,106 @@
+/* スキルセクション全体のデザイン */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .skill-category {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    width: 45%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .skill-category h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .skill-category p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #555;
+  }
+  
+  .skill-category table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .skill-category table th,
+  .skill-category table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .skill-category table th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .skill-category table td {
+    color: #555;
+  }
+  
+  .skill-category table td:last-child {
+    text-align: center;
+  }
+  
+  /* リンクのスタイル設定 */
+  .skill-link {
+    display: inline-block; /* 拡大効果を適用するためにブロック化 */
+    color: #000; /* 初期状態は黒色 */
+    text-decoration: none; /* 下線を除去 */
+    font-weight: bold; /* 太字 */
+    transition: color 0.3s ease, transform 0.3s ease; /* カラーとサイズ変更をスムーズに */
+  }
+  
+  .skill-link:hover {
+    color: #f39c12; /* ホバー時のオレンジ色 */
+    text-decoration: underline; /* ホバー時に下線を追加 */
+    transform: scale(1.2); /* ホバー時に拡大 */
+  }
+  
+  /* モバイル対応 - スキルセクションを拡大し中央揃え */
+  @media (max-width: 768px) {
+    .skills-container {
+      flex-direction: column; /* 縦方向に並べる */
+      gap: 20px; /* アイテム間の間隔を広げる */
+      align-items: center; /* 中央揃え */
+      padding: 20px; /* コンテナ全体の余白を追加 */
+    }
+  
+    .skill-category {
+      width: 100%; /* コンテナ幅を画面幅全体に */
+      max-width: 600px; /* 最大幅を設定して中央揃え */
+      padding: 20px; /* 内側の余白を広げる */
+      font-size: 1rem; /* フォントサイズをやや大きく */
+      text-align: center; /* 全体を中央揃え */
+    }
+  
+    .skill-category h3 {
+      font-size: 1.5rem; /* 見出しを大きく */
+      margin-bottom: 15px; /* 見出し下の間隔を調整 */
+    }
+  
+    .skill-category p {
+      font-size: 1rem; /* 段落のフォントサイズを拡大 */
+      line-height: 1.6; /* 行間を広げて可読性を向上 */
+      text-align: center; /* テキストを中央揃え */
+    }
+  
+    .skill-category table {
+      font-size: 0.95rem; /* テーブル内のフォントサイズを拡大 */
+      margin: 0 auto; /* テーブルを中央揃え */
+      max-width: 100%; /* テーブルの幅を親要素にフィット */
+    }
+  }
+  

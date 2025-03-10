@@ -7,6 +7,20 @@ body, html {
   font-family: 'Press Start 2P', cursive; /* ゲームっぽいフォント */
   background-color: #f9f9f9; /* 明るい背景色 */
 }
+/* バウンドアニメーション */
+@keyframes subtle-bounce {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-5px); /* ほんの少し上にバウンド */
+  }
+}
+
+/* 画像をバウンドさせる */
+.about-image {
+  animation: subtle-bounce 1.3s infinite ease-in-out; /* 2秒間隔でループ */
+}
 
 
 
@@ -338,9 +352,15 @@ section p {
 }
 
 
+/* スクリーンサイズが768px以下の場合に中央揃え */
+@media (max-width: 1233px) {
+  .about-image-container {
+    transform: translateX(-30px); /* 右に移動 */
+  }
+}
 
 /* スクリーンサイズが768px以下の場合に中央揃え */
-@media (max-width: 768px) {
+@media (max-width: 1033px) {
   .about-image-container {
     transform: translateX(0); /* 中央に配置 */
     margin: 0 auto; /* 左右の余白を自動に */
@@ -372,6 +392,17 @@ section p {
   color: #333; /* テキストカラー */
   text-align: left; /* 左揃え */
 }
+
+/* モバイル対応 - pタグのフォントサイズを調整 */
+@media (max-width: 1035px) {
+  #about p {
+    font-size: 1.2rem; /* フォントサイズを小さく設定 */
+    line-height: 2.2; /* 行間を調整 */
+    text-align: center; /* テキストを中央揃え */
+    margin: 0 auto; /* 中央揃えのためにマージンを調整 */
+  }
+}
+
 /* モバイル対応 - pタグのフォントサイズを調整 */
 @media (max-width: 768px) {
   #about p {
@@ -454,29 +485,6 @@ section p {
   animation: flip 1.5s ease-in-out;
   transform-style: preserve-3d; /* 3D回転を適用 */
   backface-visibility: hidden; /* 背面を非表示 */
-}
-
-/* 「?」を中央に表示する */
-.flip::after {
-  content: '?';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 3rem;
-  color: red;
-  opacity: 0;
-  animation: showQuestion 1.5s ease-in-out;
-}
-
-/* 「?」をフェードイン・アウトさせるアニメーション */
-@keyframes showQuestion {
-  0%, 100% {
-    opacity: 0;
-  }
-  30%, 70% {
-    opacity: 1;
-  }
 }
 
 /* 消えるアニメーション */
@@ -1039,6 +1047,47 @@ body.no-scroll {
     font-size: 1rem; /* 名前の文字サイズを調整 */
   }
 }
+/* タイムラインのアニメーション */
+.timeline-item {
+  opacity: 0;
+  transform: translateX(-100px); /* 初期位置: 左にずらす */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.timeline-item:nth-child(even) {
+  transform: translateX(100px); /* 交互に動きを変える */
+}
+
+.timeline-item.animate {
+  opacity: 1;
+  transform: translateX(0); /* 元の位置に移動 */
+}
+
+/* タイムラインアイコンのアニメーション */
+.timeline-icon {
+  width: 80px;
+  height: 80px;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.timeline-item.animate .timeline-icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* モバイル対応（小さい画面では中央寄せ） */
+@media (max-width: 768px) {
+  .timeline-item {
+      transform: translateX(0); /* モバイルではスライドなし */
+  }
+
+  .timeline-item:nth-child(even) {
+      transform: translateX(0);
+  }
+}
+
 /* 飛び散る画像アニメーションの共通スタイル */
 .scatter-img {
   position: fixed;
@@ -1111,3 +1160,4 @@ body.no-scroll {
   align-items: center; /* 縦方向の中央寄せ（必要なら） */
   width: 100%;
 }
+

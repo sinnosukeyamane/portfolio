@@ -1,0 +1,175 @@
+/* Linksセクションのスタイル */
+#links {
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  
+  .links-list {
+    display: flex;
+    justify-content: center; /* 中央揃え */
+    gap: 30px; /* アイコン間のスペース */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap; /* レスポンシブ対応 */
+  }
+  
+  .links-list li {
+    display: flex;
+    flex-direction: column; /* 縦方向に配置 */
+    align-items: center; /* 中央揃え */
+    text-align: center; /* テキストを中央揃え */
+    gap: 8px; /* アイコンと名前間のスペース */
+    width: 150px; /* リストアイテム全体の幅 */
+  }
+  
+  /* リンクアイコンのスタイル */
+  .link-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 125px; /* アイコンサイズ */
+    height: 125px; /* アイコンサイズ */
+    border-radius: 15px;
+    background-color: #f9f9f9; /* デフォルト背景 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* コメントマークの配置に必要 */
+  }
+  
+  .link-icon img {
+    max-width: 80%; /* アイコンの大きさを調整 */
+    max-height: 80%;
+  }
+  
+  /* 各アイコンの背景色設定 */
+  .link-icon.github {
+    background-color: black; /* GitHub背景色 */
+  }
+  
+  .link-icon.facebook {
+    background-color: #1877f2; /* Facebook背景色 */
+  }
+  
+  .link-icon.x {
+    background-color: silver; /* Xの背景色 */
+  }
+  
+  .link-icon.instagram {
+    background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4); /* Instagramの虹色グラデーション */
+  }
+  
+  /* ホバー時のエフェクト */
+  .link-icon:hover {
+    transform: scale(1.1) rotate(5deg); /* 拡大と傾き */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* コメントマーク（右上） */
+  .link-icon::after {
+    content: attr(data-name); /* 名前を表示 */
+    position: absolute;
+    top: -10px; /* 上部に配置 */
+    right: -10px; /* 右上に配置 */
+    background: white; /* 背景色 */
+    color: black; /* テキスト色 */
+    font-size: 0.8rem; /* コメントマークのフォントサイズ */
+    padding: 5px 10px;
+    border-radius: 15px; /* コメントマークを丸みのある形に */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none; /* デフォルトでは非表示 */
+    z-index: 10; /* 前面に表示 */
+  }
+  
+  /* ホバー時にコメントマークを表示 */
+  .link-icon:hover::after {
+    display: block;
+  }
+  
+  .links-list li span {
+    font-size: 1.1rem; /* 名前の文字サイズ */
+    font-weight: bold; /* 太字に設定 */
+    color: #000; /* テキストカラー */
+  }
+  
+  /* 小さい画面でのレスポンシブ対応 */
+  @media (max-width: 768px) {
+    .links-list {
+      gap: 20px; /* 小さい画面でのアイコン間隔を調整 */
+    }
+    
+    .link-icon {
+      width: 80px; /* アイコンサイズを小さく調整 */
+      height: 80px;
+    }
+    
+    links-list li span {
+      font-size: 1rem; /* 名前の文字サイズを調整 */
+    }
+  }
+  /* タイムラインのアニメーション */
+  .timeline-item {
+    opacity: 0;
+    transform: translateX(-100px); /* 初期位置: 左にずらす */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  
+  .timeline-item:nth-child(even) {
+    transform: translateX(100px); /* 交互に動きを変える */
+  }
+  
+  .timeline-item.animate {
+    opacity: 1;
+    transform: translateX(0); /* 元の位置に移動 */
+  }
+  
+  /* タイムラインアイコンのアニメーション */
+  .timeline-icon {
+    width: 80px;
+    height: 80px;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  
+  .timeline-item.animate .timeline-icon {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  /* モバイル対応（小さい画面では中央寄せ） */
+  @media (max-width: 768px) {
+    .timeline-item {
+        transform: translateX(0); /* モバイルではスライドなし */
+    }
+  
+    .timeline-item:nth-child(even) {
+        transform: translateX(0);
+    }
+  }
+  
+  /* 飛び散る画像アニメーションの共通スタイル */
+  .scatter-img {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    pointer-events: none;
+    z-index: 999;
+    animation: scatter-animation 2s linear forwards; /* アニメーション時間を3sから2sに短縮 */
+  }
+  
+  /* 飛び散る画像のアニメーション */
+  @keyframes scatter-animation {
+    0% {
+      opacity: 0;
+      transform: translate(0, 0) scale(0.5);
+    }
+    10% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translate(var(--random-x), var(--random-y)) rotate(var(--random-rotation)) scale(1);
+    }
+  }
