@@ -15,23 +15,25 @@
 </head>
 <body>
 
-    <div class="welcome-container" id="welcome-container">
-        <div class="welcome-content">
-            <div class="image-container">
-                <img src="img/me.png" alt="プロフィール画像" class="welcome-image">
-            </div>
-            <div class="welcome-text">
-                <h1>
-                    <span class="word" data-delay="0">Welcome</span>
-                    <span class="word" data-delay="1">to</span>
-                    <span class="word" data-delay="2">Yamane's</span>
-                    <span class="word" data-delay="3">Portfolio!</span>
-                </h1>
-            </div>
+  <div class="welcome-container" id="welcome-container">
+    <canvas id="matrix-background"></canvas> <!-- マトリックス背景 -->
+
+    <div class="welcome-content">
+        <div class="image-container">
+            <img src="img/me.png" alt="プロフィール画像" class="welcome-image">
+        </div>
+        <div class="welcome-text">
+            <h1>
+                <span class="word" data-delay="0">Welcome</span>
+                <span class="word" data-delay="1">to</span>
+                <span class="word" data-delay="2">Yamane's</span>
+                <span class="word" data-delay="3">Portfolio!</span>
+            </h1>
         </div>
     </div>
-    
-    
+</div>
+
+
     <!-- ローディングスピナー -->
     <div id="loading-spinner"></div>
 
@@ -59,23 +61,40 @@
         </div>
     </header>
     
-<section id="about">
-    <header class="topbar">
-        <h2>About</h2>
-    </header>
-    <div class="about-container">
-        <div class="about-image-container">
-            <img src="img/me.png" alt="プロフィール画像" class="about-image" id="emoji-button">
-        </div>
-        <div class="about-text">
-          <p>初めまして！大阪府出身、高専4年生・19歳の</p>
-            <p><strong>山根 愼之輔(ヤマネ シンノスケ)</strong>です！</p>
-            <p>Web開発やゲーム制作を得意としています！</p>
-            <p>趣味はゲーム、プログラミング、筋トレ、食べることです！</p>
-        </div>
-    </div>
-    <p>最終更新日(2025/03/10)</p>
-</section>
+    <section id="about">
+      <header class="topbar">
+          <h2>About</h2>
+      </header>
+      <div class="about-container">
+          <!-- 流れる画像を配置するコンテナ -->
+          <div class="floating-images">
+             <img src="img/takoyaki.png"  class="floating-image">
+              <img src="img/hugu.png" class="floating-image">
+              <img src="img/kani.png" class="floating-image">
+              <img src="img/kaisen.png"  class="floating-image">
+              <img src="img/tako.png" class="floating-image">
+              <img src="img/kusikatu.png"  class="floating-image">
+              <img src="img/ra-men.png"  class="floating-image">
+              <img src="img/dote.png"  class="floating-image">
+              <img src="img/yakitori.png"  class="floating-image">
+
+          </div>
+  
+          <div class="about-image-container">
+              <img src="img/me.png" alt="プロフィール画像" class="about-image" id="emoji-button">
+          </div>
+          <div class="about-text">
+              <p>初めまして！大阪府出身、高専4年生・19歳の</p>
+              <p><strong>山根 愼之輔(ヤマネ シンノスケ)</strong>です！</p>
+              <p>Web開発やゲーム制作を得意としています！</p>
+              <p>趣味はゲーム、プログラミング、筋トレ、食べることです！</p>
+          </div>
+      </div>
+
+      <p>最終更新日(2025/03/11)</p>
+  </section>
+  
+  
 
   
 <section id="works">
@@ -110,7 +129,7 @@
 </section>
 
 
-    <section id="history">
+    <section id="history">      
         <header class="topbar">
           <h2>History</h2>
         </header>
@@ -137,7 +156,7 @@
           <div class="timeline-content">
             <p class="small-text">優秀者として、<strong>NHK</strong>から取材を受ける。</p>
             <p class="small-text-2">↓少しロードが遅いです。</p>
-            
+              
       
               <!-- 動画を中央配置するためのコンテナ -->
               <div class="nhk-video-container">
