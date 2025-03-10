@@ -1,28 +1,3 @@
-// Linksアイコンをランダムに散らばらせる関数
-function createLinksScatterEffect() {
-  console.log("Linksセクションでスキャッターエフェクトが発動！");
-
-  const images = ['img/facebook.png', 'img/github.png', 'img/instagram.png', 'img/X.png'];
-  const linksSection = document.getElementById('links');
-
-  for (let i = 0; i < 20; i++) { // アイコンの数を調整
-      const img = document.createElement('img');
-      img.src = images[Math.floor(Math.random() * images.length)];
-      img.classList.add('scatter-img');
-
-      // ランダムな位置に配置
-      img.style.position = 'absolute';
-      img.style.left = `${Math.random() * linksSection.clientWidth}px`;
-      img.style.top = `${Math.random() * linksSection.clientHeight}px`;
-      img.style.transform = `rotate(${Math.random() * 360}deg)`;
-
-      linksSection.appendChild(img);
-
-      // 数秒後に削除
-      setTimeout(() => img.remove(), 3000);
-  }
-}
-
 // Linksセクションが表示されるたびに画像を生成
 document.addEventListener('DOMContentLoaded', () => {
     const linksSection = document.getElementById('links');
