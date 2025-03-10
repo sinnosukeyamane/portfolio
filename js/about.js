@@ -1,31 +1,73 @@
-document.getElementById("emoji-button").addEventListener("click", () => {
-    const emojis = [
+document.addEventListener("DOMContentLoaded", () => {
+    const floatingImages = document.querySelectorAll(".floating-image");
+    const aboutImage = document.getElementById("emoji-button"); // 僕の画像
+    const emojiList = [
         "🎉", "🥳", "😍", "😭", "❄️", "❤️", "🔥", "🌟", "🌈", "🎶",
         "🍀", "🌸", "💎", "✨", "🦄", "🎁", "🌼", "🎂", "🍎", "🍩",
         "🍕", "⚽", "🚀", "💡", "🎈", "🖤", "🤖", "💻", "🎮", "🎨"
     ];
-    const container = document.querySelector(".about-image-container");
 
-    for (let i = 0; i < 20; i++) {
-        const emoji = document.createElement("div");
-        emoji.classList.add("emoji");
-        emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-        emoji.style.left = `${Math.random() * 100}%`;
-        emoji.style.top = `${Math.random() * 100}%`;
-        emoji.style.animationDelay = `${Math.random() * 0.5}s`;
-        container.appendChild(emoji);
+    function animateMeImage() {
+        // 🎉 絵文字シャワーを発生させる
+        const container = document.querySelector(".about-image-container");
+        for (let i = 0; i < 20; i++) {
+            const emoji = document.createElement("div");
+            emoji.classList.add("emoji");
+            emoji.textContent = emojiList[Math.floor(Math.random() * emojiList.length)];
+            emoji.style.left = `${Math.random() * 100}%`;
+            emoji.style.top = `${Math.random() * 100}%`;
+            emoji.style.animationDelay = `${Math.random() * 0.5}s`;
+            container.appendChild(emoji);
 
-        setTimeout(() => {
-            emoji.remove();
-        }, 2000);
+            setTimeout(() => {
+                emoji.remove();
+            }, 2000);
+        }
+
+        // 🎈 僕の画像にランダムなアニメーションを適用
+        const animations = ['shake', 'bounce', 'flip', 'fade-out'];
+        const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+        aboutImage.classList.add(randomAnimation);
+
+        setTimeout(() => aboutImage.classList.remove(randomAnimation), 2000);
     }
 
-    const meImage = document.querySelector('.about-image');
-    const animations = ['shake', 'bounce', 'flip', 'fade-out'];
-    const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
-    meImage.classList.add(randomAnimation);
+    // 🔥 「僕の画像」をクリックしたときに発動
+    aboutImage.addEventListener("click", animateMeImage);
 
-    setTimeout(() => meImage.classList.remove(randomAnimation), 2000);
+    // 🔥 「食べ物（floating-image）」をクリックしても同じ動きをする
+    floatingImages.forEach(img => {
+        img.addEventListener("click", () => {
+            animateMeImage(); // 僕の画像を動かす
+
+            // 煙の画像を作成
+            const smoke = document.createElement("img");
+            smoke.src = "img/kemuri.png"; // 煙画像のパス
+            smoke.classList.add("smoke-effect");
+
+            // クリックされた画像の位置を取得
+            const rect = img.getBoundingClientRect();
+            smoke.style.position = "absolute";
+            smoke.style.left = `${rect.left + window.scrollX}px`;
+            smoke.style.top = `${rect.top + window.scrollY}px`;
+            smoke.style.width = `${img.offsetWidth}px`;
+            smoke.style.height = `${img.offsetHeight}px`;
+            document.body.appendChild(smoke);
+
+            // 画像を一旦非表示にする
+            img.style.display = "none";
+
+            // 0.7秒後に煙を消し、画像を削除
+            setTimeout(() => {
+                smoke.remove();
+            }, 700);
+
+            // 3秒後に元の画像を復活
+            setTimeout(() => {
+                img.style.display = "block";
+            }, 3000);
+        });
+    });
 });
 
 // Aboutセクションが表示されるたびに画像を生成
@@ -91,4 +133,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { threshold: 0.5 });
 
     observer.observe(aboutSection);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const floatingImages = document.querySelectorAll(".floating-image");
+
+    floatingImages.forEach(img => {
+        img.addEventListener("click", () => {
+            img.style.display = "none"; // クリックで消える
+            setTimeout(() => {
+                img.style.display = "block"; // 3秒後に復活
+            }, 3000);
+        });
+    });
 });

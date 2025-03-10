@@ -16,8 +16,11 @@
 #about {
     padding: 100px 20px;
     background-color: #f9f9f9; /* 明るい背景色 */
+    
   
   }
+  
+
   
   /* 画像コンテナの設定 */
   .about-image-container {
@@ -32,7 +35,7 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 影を追加 */
     position: relative;
     overflow: hidden; /* アイコンが飛び出さないようにする */
-    transform: translateX(75px); /* 右に移動 */
+    transform: translateX(55px); /* 右に移動 */
     transition: transform 0.3s ease; /* スムーズな移動アニメーション */
   }
   
@@ -85,7 +88,7 @@
     font-size: 1.2rem; /* テキストサイズ */
     line-height: 1.8; /* 行間の調整 */
     color: #333; /* テキストカラー */
-    text-align: left; /* 左揃え */
+    text-align: 0; /* 左揃え */
   }
 
 
@@ -206,3 +209,69 @@
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
   
+
+/* 画像の共通スタイル */
+.floating-image {
+  position: absolute;
+  animation: floatAnimation linear infinite;
+}
+
+/* 各画像のサイズを個別に指定 */
+.floating-image:nth-child(1) { width: 110px; height: 110px;}  
+.floating-image:nth-child(2) { width: 100px;} 
+.floating-image:nth-child(3) { width: 100px;  height: 95px;} 
+.floating-image:nth-child(4) { width: 100px; } 
+.floating-image:nth-child(5)   { width: 120px; height: 120px;} 
+.floating-image:nth-child(6)   { width: 130px; height: 140px;} 
+.floating-image:nth-child(7) { width: 100px; } 
+.floating-image:nth-child(8) { width: 115px; height: 120px;}
+.floating-image:nth-child(9) { width: 115px; height: 100px;}
+
+/* 各画像の初期位置とアニメーションの遅延 */
+.floating-image:nth-child(1) { top: 87%; left: -20%; animation-duration: 9s; animation-delay: 0s; }
+.floating-image:nth-child(2) { top: 88%; left: -20%; animation-duration: 9s; animation-delay: 1s; }
+.floating-image:nth-child(3) { top: 88%; left: -20%; animation-duration: 9s; animation-delay: 2s; }
+.floating-image:nth-child(4) { top: 88%; left: -20%; animation-duration: 9s; animation-delay: 3s; }
+.floating-image:nth-child(5) { top: 87%; left: -20%; animation-duration: 9s; animation-delay: 4s; }
+.floating-image:nth-child(6) { top: 85%; left: -20%; animation-duration: 9s; animation-delay: 5s; }
+.floating-image:nth-child(7) { top: 88%; left: -20%; animation-duration: 9s; animation-delay: 6s; }
+.floating-image:nth-child(8) { top: 86%; left: -20%; animation-duration: 9s; animation-delay: 7s; }
+.floating-image:nth-child(9) { top: 88%; left: -20%; animation-duration: 9s; animation-delay: 8s; }
+
+/* 画像が横に流れるアニメーション */
+@keyframes floatAnimation {
+  0% { transform: translateX(0); opacity: 1; }
+  100% { transform: translateX(114vw); opacity: 1; }
+}
+.smoke-effect {
+  animation: smokeMove 0.7s ease-out;
+  opacity: 0.5;
+}
+
+@keyframes smokeMove {
+  0% { opacity: 0.5; transform: scale(1) translateY(0px) rotate(0deg); }
+  100% { opacity: 0; transform: scale(1.5) translateY(-20px) rotate(-5deg); }
+}
+/* 🎉 絵文字シャワー（飛び散る動き） */
+.emoji-shower {
+  position: absolute;
+  font-size: 24px;
+  animation: emojiFall 1s ease-out;
+  opacity: 0.8;
+}
+
+@keyframes emojiFall {
+  0% { transform: scale(1) translateY(0px) rotate(0deg); opacity: 1; }
+  100% { transform: scale(1.5) translateY(-50px) rotate(10deg); opacity: 0; }
+}
+
+/* 🎈 軽くバウンドするアニメーション */
+@keyframes subtleBounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.subtle-bounce {
+  animation: subtleBounce 0.5s ease-in-out;
+}

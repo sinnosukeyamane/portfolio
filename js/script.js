@@ -168,93 +168,8 @@ const sectionObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll("section").forEach(section => sectionObserver.observe(section));
 
 
-// 動画拡大表示機能
-document.querySelectorAll('.work-item video').forEach(video => {
-    // ホバー時に再生開始
-    video.addEventListener('mouseover', () => {
-        video.play();
-    });
-
-    // ホバーが外れたら再生停止
-    video.addEventListener('mouseout', () => {
-        video.pause();
-        video.currentTime = 0; // 再生位置をリセット
-    });
-
-    // クリックで拡大表示
-    video.addEventListener('click', () => {
-        // モーダル作成
-        const modal = document.createElement('div');
-        modal.classList.add('media-modal');
-
-        // モーダル内の動画
-        const modalVideo = document.createElement('video');
-        modalVideo.src = video.src;
-        modalVideo.controls = true;
-        modalVideo.loop = true;
-        modalVideo.autoplay = true;
-        modalVideo.classList.add('modal-media');
-
-        // 閉じるボタン
-        const closeButton = document.createElement('button');
-        closeButton.textContent = '×';
-        closeButton.classList.add('close-modal');
-
-        // モーダル全体をクリックで閉じる
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal || e.target === closeButton) {
-                modal.remove();
-                video.pause(); // 元の動画も停止
-                video.currentTime = 0; // 再生位置をリセット
-            }
-        });
-
-        // モーダルに要素を追加
-        modal.appendChild(modalVideo);
-        modal.appendChild(closeButton);
-        document.body.appendChild(modal);
-    });
-});
 
 
-// h3をクリックしたときに対応する動画を拡大表示
-document.querySelectorAll('.work-description h3').forEach(title => {
-    title.addEventListener('click', (e) => {
-        const workItem = e.target.closest('.work-item');
-        const video = workItem.querySelector('video');
-
-        if (video) {
-            // 拡大動画用のモーダル作成
-            const modal = document.createElement('div');
-            modal.classList.add('media-modal');
-
-            // 拡大動画
-            const modalVideo = document.createElement('video');
-            modalVideo.src = video.src;
-            modalVideo.controls = true; // 動画用の再生コントロールを追加
-            modalVideo.loop = true; // ループ再生
-            modalVideo.autoplay = true; // 自動再生
-            modalVideo.classList.add('modal-media');
-
-            // 閉じるボタン
-            const closeButton = document.createElement('button');
-            closeButton.textContent = '×';
-            closeButton.classList.add('close-modal');
-
-            // モーダル全体をクリックで閉じる
-            modal.addEventListener('click', (event) => {
-                if (event.target === modal || event.target === closeButton) {
-                    modal.remove();
-                }
-            });
-
-            // モーダルに要素を追加
-            modal.appendChild(modalVideo);
-            modal.appendChild(closeButton);
-            document.body.appendChild(modal);
-        }
-    });
-});
 
 // フェードイン/アウトのトリガーを設定する関数
 function handleSectionIntersection(entries, observer) {
@@ -327,5 +242,118 @@ document.querySelectorAll('.nhk-video').forEach(video => {
         modal.appendChild(modalVideo);
         modal.appendChild(closeButton);
         document.body.appendChild(modal);
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("section h2").forEach((h2) => {
+        let newHTML = "";
+        h2.textContent.split("").forEach((char, i) => {
+            let delay = i * 0.1; // 文字ごとに遅延をつける
+            newHTML += `<span style="animation-delay: ${delay}s;">${char}</span>`;
+        });
+        h2.innerHTML = newHTML;
+    });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const updateText = document.querySelector(".wave-text");
+    
+    if (updateText) {
+        let newHTML = "";
+        updateText.textContent.split("").forEach((char, i) => {
+            let delay = i * 0.1; // 文字ごとに遅延をつける
+            newHTML += `<span style="animation-delay: ${delay}s;">${char}</span>`;
+        });
+        updateText.innerHTML = newHTML;
+    }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const canvas = document.getElementById("matrix-background");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const fontSize = 16;
+    const columns = Math.floor(canvas.width / fontSize);
+    const drops = Array(columns).fill(0);
+
+    function drawMatrix() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        ctx.fillStyle = "#00ff00"; // 緑色の文字
+        ctx.font = `${fontSize}px monospace`;
+
+        for (let i = 0; i < drops.length; i++) {
+            const text = characters.charAt(Math.floor(Math.random() * characters.length));
+            const x = i * fontSize;
+            const y = drops[i] * fontSize;
+
+            ctx.fillText(text, x, y);
+
+            if (y > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }
+
+    function animateMatrix() {
+        drawMatrix();
+        requestAnimationFrame(animateMatrix);
+    }
+
+    animateMatrix();
+
+    // ウィンドウリサイズ時にキャンバスサイズを調整
+    window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const floatingImages = document.querySelectorAll(".floating-image");
+
+    floatingImages.forEach(img => {
+        img.addEventListener("click", () => {
+            // 煙の画像を作成
+            const smoke = document.createElement("img");
+            smoke.src = "img/kemuri.png"; // 煙画像のパス
+            smoke.classList.add("smoke-effect");
+
+            // クリックされた画像の位置を取得
+            const rect = img.getBoundingClientRect();
+            smoke.style.position = "absolute";
+            smoke.style.left = `${rect.left + window.scrollX}px`;
+            smoke.style.top = `${rect.top + window.scrollY}px`;
+            smoke.style.width = `${img.offsetWidth}px`;
+            smoke.style.height = `${img.offsetHeight}px`;
+            document.body.appendChild(smoke);
+
+            // 画像をバウンドさせる（subtle-bounce）
+            img.classList.add("subtle-bounce");
+            setTimeout(() => {
+                img.classList.remove("subtle-bounce");
+            }, 500);
+
+            // 画像を一旦非表示にする
+            img.style.display = "none";
+
+            // 0.7秒後に煙を消し、画像を削除
+            setTimeout(() => {
+                smoke.remove();
+            }, 700);
+
+            // 3秒後に元の画像を復活
+            setTimeout(() => {
+                img.style.display = "block";
+            }, 3000);
+        });
     });
 });
