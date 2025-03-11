@@ -85,7 +85,7 @@
           </div>
           <div class="about-text">
               <p>初めまして！大阪府出身、高専4年生・19歳の</p>
-              <p><strong>山根 愼之輔(ヤマネ シンノスケ)</strong>です！</p>
+              <p><strong class="strong-text">山根 愼之輔</strong><strong>(ヤマネ シンノスケ)</strong>です！</p>
               <p>Web開発やゲーム制作を得意としています！</p>
               <p>趣味はゲーム、プログラミング、筋トレ、食べることです！</p>
           </div>
@@ -128,37 +128,38 @@
   </div>
 </section>
 
+<section id="history">      
+  <header class="topbar">
+    <h2>History</h2>
+  </header>
+  <p class="description">これまでの経歴を記載します。フロントエンド以外の<strong>プログラミング</strong>は主に独学で行っています。</p>
 
-    <section id="history">      
-        <header class="topbar">
-          <h2>History</h2>
-        </header>
-        <p class="description">これまでの経歴を記載します。フロントエンド以外の<strong>プログラミング</strong>は主に独学で行っています。</p>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-year">2006年/0歳</div>
-            <div class="timeline-content">誕生。</div>
+  <!-- 画像を絶対位置で配置 -->
+  <img src="img/baby.png" class="history-image baby">
+  <img src="img/pc2.png" class="history-image pc2">
+  <img src="img/camera.png" class="history-image camera">
+  <img src="img/basketball.png" class="history-image basketball">
+  <img src="img/benkyo.png" class="history-image benkyo">
+  <img src="img/gati.png" class="history-image gati">
+
+  <div class="timeline">
+      <div class="timeline-item">
+          <div class="timeline-year">2006年/0歳</div>
+          <div class="timeline-content">誕生。</div>
+      </div>
+
+      <div class="timeline-item">
+          <div class="timeline-year">2015年/9歳</div>
+          <div class="timeline-content">
+              Tech Kids Schoolでプログラミングを習う。HTML/CSS/JSによるフロントエンド、Web制作を学ぶ。
           </div>
-          <div class="timeline-item">
-            <div class="timeline-year">2012年/6歳</div>
-            <div class="timeline-content">小学校入学。</div>
-          </div>     
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-year">2015年/9歳</div>
-            <div class="timeline-content">
-                Tech Kids Schoolでプログラミングを習う。HTML/CSS/JSによるフロントエンド、Web制作を学ぶ。
-            </div>
-        </div>
-        
-        <div class="timeline-item">
+      </div>
+
+      <div class="timeline-item">
           <div class="timeline-year">2016年/10歳</div>
           <div class="timeline-content">
-            <p class="small-text">優秀者として、<strong>NHK</strong>から取材を受ける。</p>
-            <p class="small-text-2">↓少しロードが遅いです。</p>
-              
-      
-              <!-- 動画を中央配置するためのコンテナ -->
+              <p class="small-text">優秀者として、<strong>NHK</strong>から取材を受ける。</p>
+              <p class="small-text-2">↓少しロードが遅いです。</p>
               <div class="nhk-video-container">
                   <video class="nhk-video" muted>
                       <source src="https://www.dropbox.com/scl/fi/r7716qqxin8hlkp1ndrlj/programing.mp4?rlkey=2pbbuqbvzus52spc2wn18zjba&st=dz7yyy70&raw=1" type="video/mp4">
@@ -167,31 +168,35 @@
               </div>
           </div>
       </div>
-      
-      
-          <div class="timeline-item">
-            <div class="timeline-year">2018年/12歳~</div>
-            <div class="timeline-content">中学校入学。大阪府一位のバスケ部に入り、4年間習ったプログラミング教室を辞める。</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-year">2021年/14歳</div>
-            <div class="timeline-content">高専入学。バスケ部を続ける。</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-year">2022~2024年/15~17歳</div>
-            <div class="timeline-content special-content">
-              高専でC言語/KiCad/Fusion360<br>
-              /Arduino/RaspberryPi/Pythonの基礎知識を学ぶ。
-            </div>
-            
 
+      <div class="timeline-item">
+          <div class="timeline-year">2018年/12歳~</div>
+          <div class="timeline-content">中学校入学。<strong>大阪府一位</strong>のバスケ部に入り、4年間習ったプログラミング教室を辞める。</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">2021年/14歳</div>
+        <div class="timeline-content">高専入学。バスケ部を続ける。</div>
+      </div>
+      
+      <div class="timeline-item">
+          <div class="timeline-year">2022~2024年/15~17歳</div>
+          <div class="timeline-content special-content">
+              高専でC言語/KiCad/Fusion360<br> /Arduino/RaspberryPi/Pythonの基礎知識を学ぶ。
           </div>
-          <div class="timeline-item">
-            <div class="timeline-year">2025年/18歳~</div>
-            <div class="timeline-content">現在:C#を独学で学び、Unityでの2D/3DGame制作に注力する。</div>
-          </div>
-        </div>
-      </section>
+      </div>
+
+      <div class="timeline-item">
+          <div class="timeline-year">2025年/18歳~</div>
+          <div class="timeline-content">現在:C#を独学で学び、Unityでの2D/3DGame制作に注力する。</div>
+      </div>
+  </div>
+</section>
+
+      
+      
+
+ 
       
       <section id="skills"> 
         <header class="topbar">
@@ -200,7 +205,7 @@
         <div class="skills-container">
           <div class="skill-category">
             <h3>デザイン・コーディング</h3>
-            <p>基本的なHTML/CSSコーディングは可能です。</p>
+            <p>HTML/CSSでのコーディングが得意です。</p>
             <table>
               <tr>
                 <th>技術</th>
