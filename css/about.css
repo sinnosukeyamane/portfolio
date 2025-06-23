@@ -256,12 +256,148 @@
 
 .strong-text {
   font-size: 28px; /* 小さめのサイズ（適宜変更可） */
+
 }
+
 
 /* モバイル対応 - pタグのフォントサイズを調整 */
 @media (max-width: 1035px) {
 
   .strong-text {
     font-size: 20px; /* 小さめのサイズ（適宜変更可） */
+  }
+}
+
+
+.saisyu {
+  transition: transform 0.6s ease, color 0.3s ease;
+}
+.saisyu:hover {
+  transform: scale(1.1); /* ゆっくり拡大 */
+  color: #f39c12;
+}
+
+.roulette-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+}
+
+.roulette-calendar {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  animation: zoomIn 0.6s ease-in-out;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 60px);
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.calendar-cell {
+  width: 60px;
+  height: 60px;
+  background-color: #eee;
+  font-weight: bold;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+/* アクティブなセル */
+.calendar-cell.active {
+  background-color: #00c3ff;
+  color: #fff;
+  transform: scale(1.4) rotate(5deg);
+  box-shadow: 0 0 15px 5px #00e5ff;
+  transition: all 0.2s ease-in-out;
+}
+
+/* 決定後の演出 */
+.calendar-cell.final-hit {
+  background-color: #ffd700 !important;
+  color: #000 !important;
+  box-shadow: 0 0 30px 10px gold !important;
+}
+
+#roulette-result {
+  font-size: 1.4rem;
+  margin-top: 10px;
+}
+
+/* ズームアニメーション */
+@keyframes zoomIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* 閉じるボタン */
+#close-roulette {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: rgb(36, 139, 212);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 20px;
+}
+
+#close-roulette:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #69c1ea;
+}
+
+/* フラッシュ（ピカッ） */
+#flash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 4000;
+  transition: opacity 0.4s ease;
+}
+#flash-screen.flash-visible {
+  opacity: 1;
+}
+
+/* 星の飛散アニメーション */
+.star {
+  position: absolute;
+  font-size: 1.5rem;
+  animation: flyAway 1s ease-out forwards;
+  z-index: 5000;
+  pointer-events: none;
+}
+
+@keyframes flyAway {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) scale(0.5) rotate(720deg);
+    opacity: 0;
   }
 }

@@ -147,3 +147,121 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const openRoulette = document.getElementById("open-roulette");
+    const modal = document.getElementById("roulette-modal");
+    const grid = document.getElementById("calendar-grid");
+    const resultText = document.getElementById("roulette-result");
+    const closeBtn = document.getElementById("close-roulette");
+    const flash = document.getElementById("flash-screen");
+  
+    let flashInterval = null;
+    let activeInterval = null;
+    let animationRunning = false;
+    let stars = [];
+  
+    // カレンダー31マス生成（初回のみ）
+    if (grid.children.length === 0) {
+      for (let i = 1; i <= 31; i++) {
+        const cell = document.createElement("div");
+        cell.classList.add("calendar-cell");
+        cell.textContent = i;
+        grid.appendChild(cell);
+      }
+    }
+  
+    const cells = document.querySelectorAll(".calendar-cell");
+  
+    // モーダルを開く
+    openRoulette.addEventListener("click", () => {
+      modal.style.display = "flex";
+      resultText.textContent = "今月のラッキーデーを選んでいます...";
+      animationRunning = true;
+  
+      let previousIndex = null;
+      let count = 0;
+      const maxFlashes = Math.floor(Math.random() * 30) + 40;
+  
+      activeInterval = setInterval(() => {
+        if (!animationRunning) return;
+  
+        if (previousIndex !== null) {
+          cells[previousIndex].classList.remove("active");
+        }
+  
+        const randomIndex = Math.floor(Math.random() * cells.length);
+        previousIndex = randomIndex;
+        cells[randomIndex].classList.add("active");
+  
+        count++;
+        if (count >= maxFlashes) {
+          clearInterval(activeInterval);
+  
+          // 最終決定の演出
+          const lucky = parseInt(cells[randomIndex].textContent);
+          setTimeout(() => {
+            if (!animationRunning) return;
+  
+            resultText.textContent = `🎉 今月のラッキーデーは ${lucky}日 です！`;
+  
+            // ピカッ！
+            flash.classList.add("flash-visible");
+            setTimeout(() => {
+              flash.classList.remove("flash-visible");
+            }, 300);
+  
+            // 星の演出
+            for (let i = 0; i < 20; i++) {
+              const star = document.createElement("div");
+              star.classList.add("star");
+              star.textContent = "✨";
+              star.style.left = `${cells[randomIndex].offsetLeft + 30}px`;
+              star.style.top = `${cells[randomIndex].offsetTop + 30}px`;
+              star.style.setProperty("--x", `${(Math.random() - 0.5) * 300}px`);
+              star.style.setProperty("--y", `${(Math.random() - 0.5) * 300}px`);
+              grid.appendChild(star);
+              stars.push(star);
+              setTimeout(() => star.remove(), 1000);
+            }
+  
+            // ズームぷるぷる
+            cells[randomIndex].animate([
+              { transform: "scale(1.4) rotate(0deg)" },
+              { transform: "scale(1.6) rotate(5deg)" },
+              { transform: "scale(1.4) rotate(-5deg)" },
+              { transform: "scale(1.5) rotate(0deg)" }
+            ], {
+              duration: 600,
+              easing: "ease-in-out"
+            });
+  
+            // 見た目強調
+            cells[randomIndex].classList.add("final-hit");
+          }, 300);
+        }
+      }, 80);
+    });
+  
+    // モーダルを閉じる & アニメーション強制終了
+    closeBtn.addEventListener("click", () => {
+      animationRunning = false;
+  
+      modal.style.display = "none";
+      resultText.textContent = "";
+  
+      clearInterval(activeInterval);
+      flash.classList.remove("flash-visible");
+  
+      cells.forEach(cell => {
+        cell.classList.remove("active", "final-hit");
+        cell.style.boxShadow = "";
+        cell.style.backgroundColor = "";
+      });
+  
+      // 星も削除
+      stars.forEach(star => star.remove());
+      stars = [];
+    });
+  });
+  

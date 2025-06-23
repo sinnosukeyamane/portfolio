@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="css/links.css">
 
 </head>
+
 <body>
+  <div id="flash-screen"></div>
 
   <div class="welcome-container" id="welcome-container">
     <canvas id="matrix-background"></canvas> <!-- マトリックス背景 -->
@@ -91,9 +93,21 @@
           </div>
       </div>
 
-      <p class="saisyu">最終更新日(2025/06/23)</p>
+      <p class="saisyu" id="open-roulette">最終更新日(2025/06/23)</p>
+      <!-- カレンダールーレットモーダル -->
+<div id="roulette-modal" class="roulette-modal">
+  <div class="roulette-calendar">
+    <div id="calendar-grid" class="calendar-grid"></div>
+    <p id="roulette-result">今月のラッキーデーを選んでいます...</p>
+    <button id="close-roulette">閉じる</button>
+  </div>
+</div>
+
+
+
   </section>
   
+
   
 
   
@@ -303,19 +317,19 @@
               <tr>
                 <td><a href="https://ja.wikipedia.org/wiki/KiCad" target="_blank" class="skill-link">KiCad</a></td>
                 <td>1年</td>
-                <td>★★★☆☆</td>
+                <td>★★★★☆</td>
               </tr>
               <tr>
                 <td><a href="https://ja.wikipedia.org/wiki/Fusion_360" target="_blank" class="skill-link">Fusion 360</a></td>
                 <td>1年</td>
-                <td>★★★☆☆</td>
+                <td>★★★★☆</td>
               </tr>
             </table>
           </div>
       
           <div class="skill-category">
             <h3>その他</h3>
-            <p>UnityでC#を用いたゲーム開発が可能です。</p>
+            <p>Unity/UE5でC#/C++を用いたゲーム開発が可能です。</p>
             <table>
               <tr>
                 <th>技術</th>
@@ -324,6 +338,11 @@
               </tr>
               <tr>
                 <td><a href="https://ja.wikipedia.org/wiki/C_Sharp" target="_blank" class="skill-link">C#</a></td>
+                <td>半年</td>
+                <td>★★★☆☆</td>
+              </tr>
+              <tr>
+                <td><a href="https://ja.wikipedia.org/wiki/C_Sharp" target="_blank" class="skill-link">C++</a></td>
                 <td>半年</td>
                 <td>★★★☆☆</td>
               </tr>
