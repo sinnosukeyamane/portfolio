@@ -137,7 +137,7 @@ font-size: 14px; /* 小さめのサイズ（適宜変更可） */
       position: relative;
       margin: 30px auto; /* 上下の余白を調整 */
       padding: 10px 0; /* タイムライン全体の余白を減らす */
-      max-width: 700px; /* 全体の幅を調整 */
+      max-width: 1000px; /* 全体の幅を調整 */
     }
     
     /* タイムライン項目のスタイル */
