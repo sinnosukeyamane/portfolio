@@ -166,8 +166,6 @@ section h2:hover {
   color: #f39c12;
 }
 
-
-
 /* transformではなく top を使って「波打ち」 */
 @keyframes wave {
   0%, 100% {
