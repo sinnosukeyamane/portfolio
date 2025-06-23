@@ -158,7 +158,7 @@ section h2 {
   color: #000000;
   transition: transform 0.6s ease, color 0.3s ease;
   cursor: pointer;
-  animation: wave 2s ease-in-out infinite;
+  animation: wave2 2s ease-in-out infinite;
 }
 
 section h2:hover {
@@ -167,7 +167,7 @@ section h2:hover {
 }
 
 /* transformではなく top を使って「波打ち」 */
-@keyframes wave {
+@keyframes wave2 {
   0%, 100% {
     top: 0;
   }
